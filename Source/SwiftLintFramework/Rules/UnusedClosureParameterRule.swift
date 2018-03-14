@@ -46,6 +46,12 @@ public struct UnusedClosureParameterRule: ASTRule, ConfigurationProviderRule, Co
             ({ (manager: FileManager) in
               print(manager)
             })(FileManager.default)
+            """,
+            """
+            // See [Strongify](https://github.com/krzysztofzablocki/Strongify)
+            async(completion: strongify(weak: self) { `self` in
+                self.onCompletion()
+            })
             """
         ],
         triggeringExamples: [
@@ -57,7 +63,12 @@ public struct UnusedClosureParameterRule: ASTRule, ConfigurationProviderRule, Co
             "genericsFunc { (↓number: TypeA, idx: TypeB) in return idx\n}\n",
             "hoge(arg: num) { ↓num in\n" +
             "}\n",
-            "fooFunc { ↓아 in\n }"
+            "fooFunc { ↓아 in\n }",
+            """
+            // See [Strongify](https://github.com/krzysztofzablocki/Strongify)
+            async(completion: strongify(weak: self) { `self` in
+            })
+            """
         ],
         corrections: [
             "[1, 2].map { ↓number in\n return 3\n}\n":

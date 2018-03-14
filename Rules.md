@@ -16471,6 +16471,13 @@ hoge(arg: num) { num in
 })(FileManager.default)
 ```
 
+```swift
+// See [Strongify](https://github.com/krzysztofzablocki/Strongify)
+async(completion: strongify(weak: self) { `self` in
+    self.onCompletion()
+})
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -16525,6 +16532,12 @@ hoge(arg: num) { ↓num in
 ```swift
 fooFunc { ↓아 in
  }
+```
+
+```swift
+// See [Strongify](https://github.com/krzysztofzablocki/Strongify)
+async(completion: strongify(weak: self) { `self` in
+})
 ```
 
 </details>
